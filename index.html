@@ -1,1 +1,26 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <script src="https://copy-customdemo-astra.surv.biz/digi_runner.js"></script>-->
+    <script type="text/javascript" src="https://stage1-astra.surv.biz/digi_runner.js"></script>
+</head>
+<body>
+ <h1> 2 </h1>
+</body>
+<script>
+    function SetParameters() {
+        window.VocSignal_SendEvent('SetParameters', {
+            apiUrl: 'https://stage1-astra.surv.biz/',
+            language: 'en',
+            customerId: 'test8U5jh8R00Hjh9'+ Math.floor(Math.random() *
+                Math.floor(9999)),
+            surveyId: 10619
+        });
+    }
+    SetParameters();
+
+</script>
+</html>
