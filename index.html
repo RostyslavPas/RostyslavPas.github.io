@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    <script type="text/javascript" src="https://stage1-astra.surv.biz/digi_runner.js"></script>-->
-    <script type="text/javascript" src="http://localhost:8410/digi_runner.js"></script>
+    <script type="text/javascript" src="https://stage1-astra.surv.biz/digi_runner.js"></script>
+<!--    <script type="text/javascript" src="http://localhost:8410/digi_runner.js"></script>-->
     <style>
         body {
             background-image:
@@ -22,25 +22,24 @@
     </style>
 </head>
 <body>
- <h1> New update for test digi runner (Add side scroll to Matrix answer options) v4 </h1>
+ <h1> New update for test digi runner (Add side scroll to Matrix answer options) v5 </h1>
 </body>
 <script>
     function SetParameters() {
         window.VocSignal_SendEvent('SetParameters', {
-            // apiUrl: 'https://stage1-astra.surv.biz/',
-            apiUrl: 'http://localhost:8410/',
+            apiUrl: 'https://stage1-astra.surv.biz/',
+            // apiUrl: 'http://localhost:8410/',
             language: 'en',
             customerId: 'test8U5jh8R00Hjh9'+ Math.floor(Math.random() *
                 Math.floor(9999)),
-            surveyId: 568
+            surveyId: 13869
         });
-
+        window.VocSignal_SendEvent('SetCsvParameters', [
+            { id: 63854,  limit: 2, randomLimit: true },
+            { id: 63855,  limit: 2, randomLimit: true }
+        ]);
     }
     SetParameters();
 
 </script>
-<a style="display:inline-block;background-color:#FC5200;color:#fff;padding:5px 10px 5px 30px;font-size:11px;font-family:Helvetica, Arial, sans-serif;white-space:nowrap;text-decoration:none;background-repeat:no-repeat;background-position:10px center;border-radius:3px;background-image:url('https://badges.strava.com/logo-strava-echelon.png')" href='https://strava.com/athletes/22370600' target="_clean">
-  Follow me on
-  <img src='https://badges.strava.com/logo-strava.png' alt='Strava' style='margin-left:2px;vertical-align:text-bottom' height=13 width=51 />
-</a>
 </html>
