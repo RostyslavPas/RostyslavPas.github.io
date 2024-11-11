@@ -22,22 +22,26 @@
     </style>
 </head>
 <body>
- <h1> New update for test digi runner (Add side scroll to Matrix answer options) v6 </h1>
+ <h1> New update for test digi runner
+     (Matrix question: a text of a question
+     is not wrapped and is cropped after a certain lengths.)
+     __V1__ </h1>
 </body>
 <script>
     function SetParameters() {
         window.VocSignal_SendEvent('SetParameters', {
-            apiUrl: 'https://stage1-astra.surv.biz/',
+            apiUrl: 'https://stage2-astra.surv.biz/',
+            // apiUrl: 'https://stage1-astra.surv.biz/',
             // apiUrl: 'http://localhost:8410/',
             language: 'en',
             customerId: 'test8U5jh8R00Hjh9'+ Math.floor(Math.random() *
                 Math.floor(9999)),
-            surveyId: 13869
+            surveyId: 14799
         });
-        window.VocSignal_SendEvent('SetCsvParameters', [
-            { id: 63854,  limit: 5, randomLimit: true },
-            { id: 63855,  limit: 3, randomLimit: true }
-        ]);
+        // window.VocSignal_SendEvent('SetCsvParameters', [
+        //     { id: 63854,  limit: 5, randomLimit: true },
+        //     { id: 63855,  limit: 3, randomLimit: true }
+        // ]);
     }
     SetParameters();
 
