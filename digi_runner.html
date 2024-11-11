@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://stage1-astra.surv.biz/digi_runner.js"></script>
+<!--    <script type="text/javascript" src="http://localhost:8410/digi_runner.js"></script>-->
+    <style>
+        body {
+            background-image:
+                    url('https://salestechstar.com/wp-content/uploads/2023/01/SANDSIV-is-a-new-partner-in-the-network-of-the-i-CEM-initiative.jpg');
+                    /*url('https://pinarello.com/storage/thumbs/Article/2240_1602_crop__044f77d37d26cac22604153934972969.jpg');*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        h1 {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+ <h1> __V2__ </h1>
+</body>
+<script>
+    function SetParameters() {
+        window.VocSignal_SendEvent('SetParameters', {
+            apiUrl: 'https://stage2-astra.surv.biz/',
+            // apiUrl: 'https://stage1-astra.surv.biz/',
+            // apiUrl: 'http://localhost:8410/',
+            language: 'en',
+            customerId: 'test8U5jh8R00Hjh9'+ Math.floor(Math.random() *
+                Math.floor(9999)),
+            surveyId: 14799
+        });
+        // window.VocSignal_SendEvent('SetCsvParameters', [
+        //     { id: 63854,  limit: 5, randomLimit: true },
+        //     { id: 63855,  limit: 3, randomLimit: true }
+        // ]);
+    }
+    SetParameters();
+
+</script>
+</html>
