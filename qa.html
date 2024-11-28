@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        h3 {
+            color: #34495e;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>QA Interview Preparation</h1>
+
+    <h2>1. Аннотації</h2>
+    <p>Аннотації — це метадані, які додаються до коду для опису поведінки, налаштування тестів або взаємодії з фреймворками. У тестуванні часто використовуються:</p>
+    <ul>
+        <li><code>@Test</code>: Позначає метод як тестовий.</li>
+        <li><code>@BeforeMethod</code>: Виконує налаштування перед кожним тестом.</li>
+        <li><code>@DataProvider</code>: Надає дані для параметризованих тестів.</li>
+    </ul>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        @Test<br>
+        public void testLogin() {<br>
+        &nbsp;&nbsp;assertTrue(login("user", "password"));<br>
+        }
+    </code>
+
+    <h2>2. Rest Assured</h2>
+    <p>Rest Assured — це бібліотека для автоматизації тестування REST API. Вона дозволяє виконувати HTTP-запити (GET, POST, PUT, DELETE) і перевіряти відповіді.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        given().baseUri("https://api.example.com")<br>
+        .when().get("/users")<br>
+        .then().statusCode(200).body("size()", greaterThan(0));
+    </code>
+
+    <h2>3. Selenide</h2>
+    <p>Selenide — це фреймворк для автоматизації UI тестів на основі Selenium. Він забезпечує простий API, автоматичне очікування елементів і більше зручності при роботі з веб-додатками.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        $("input[name='username']").setValue("admin");<br>
+        $("input[name='password']").setValue("password").pressEnter();<br>
+        $("div.success").shouldHave(text("Welcome!"));
+    </code>
+
+    <h2>4. Паралеллізація</h2>
+    <p>Паралеллізація дозволяє виконувати тести у кількох потоках для пришвидшення. Це досягається через налаштування конфігураційного файлу або параметрів фреймворку.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        &lt;suite name="ParallelTests" parallel="methods" thread-count="4"&gt;<br>
+        &nbsp;&nbsp;&lt;test name="SampleTest"&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;classes&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;class name="com.example.MyTest" /&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/classes&gt;<br>
+        &nbsp;&nbsp;&lt;/test&gt;<br>
+        &lt;/suite&gt;
+    </code>
+
+    <h2>5. CI/CD</h2>
+    <p>CI/CD — це набір практик для автоматизації інтеграції, тестування і деплою. CI забезпечує перевірку коду, а CD — автоматичну доставку продукту.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        stages:<br>
+        - build<br>
+        - test<br>
+        - deploy<br><br>
+        test:<br>
+        &nbsp;&nbsp;stage: test<br>
+        &nbsp;&nbsp;script:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- pytest tests/
+    </code>
+
+    <h2>6. GitLab</h2>
+    <p>GitLab — це платформа DevOps, яка включає систему контролю версій, CI/CD та інструменти для спільної роботи.</p>
+    <p><strong>Приклад:</strong> Файл <code>.gitlab-ci.yml</code> для пайплайну:</p>
+    <code>
+        stages:<br>
+        - build<br>
+        - test<br>
+        - deploy
+    </code>
+
+    <h2>7. Kubernetes (k8s)</h2>
+    <p>Kubernetes — це платформа для управління контейнерами. Вона автоматизує масштабування, деплой і оновлення додатків.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        kubectl get pods<br>
+        kubectl apply -f deployment.yaml
+    </code>
+
+    <h2>8. Allure</h2>
+    <p>Allure — це інструмент для створення наглядних репортів автоматизованих тестів. Він інтегрується з TestNG, JUnit, Pytest та іншими фреймворками.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        @Attachment(value = "Screenshot", type = "image/png")<br>
+        public byte[] takeScreenshot() {<br>
+        &nbsp;&nbsp;return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);<br>
+        }
+    </code>
+
+    <h2>9. Сліпи</h2>
+    <p>Сліпи (<code>Thread.sleep()</code>) використовуються для очікування, але їх варто уникати через затримки у тестах.</p>
+    <p><strong>Приклад:</strong> <code>Thread.sleep(2000);</code></p>
+
+    <h2>10. Логи</h2>
+    <p>Логи — це записи подій у системі, які допомагають відслідковувати роботу програми.</p>
+    <p><strong>Приклад у Python:</strong></p>
+    <code>
+        import logging<br>
+        logging.basicConfig(level=logging.INFO)<br>
+        logging.info("Test started")
+    </code>
+
+    <h2>11. Ретраї</h2>
+    <p>Ретраї — це повторний запуск тесту при невдачі.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        @Test(retryAnalyzer = RetryAnalyzer.class)
+    </code>
+
+    <h2>12. Техніки тест-дизайну</h2>
+    <p>Це методи створення ефективних тест-кейсів, такі як:</p>
+    <ul>
+        <li>Еквівалентне розбиття.</li>
+        <li>Аналіз граничних значень.</li>
+        <li>Метод причин і наслідків.</li>
+    </ul>
+
+    <h2>13. Клієнт-серверна архітектура</h2>
+    <p>Архітектура, де клієнт запитує дані, а сервер відповідає. Приклад: браузер надсилає запит до веб-сайту.</p>
+
+    <h2>14. REST</h2>
+    <p>REST — це стиль роботи з API, який базується на HTTP-запитах (GET, POST, PUT, DELETE).</p>
+    <p><strong>Приклад:</strong> <code>GET /users</code></p>
+
+    <p>REST і SOAP — це протоколи для взаємодії між серверами та клієнтами.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Характеристика</th>
+                <th>REST</th>
+                <th>SOAP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Протокол</td>
+                <td>HTTP/HTTPS</td>
+                <td>XML-based протокол</td>
+            </tr>
+            <tr>
+                <td>Формат даних</td>
+                <td>JSON, XML</td>
+                <td>XML</td>
+            </tr>
+            <tr>
+                <td>Легкість використання</td>
+                <td>Простий і швидкий</td>
+                <td>Складніший і більш структурований</td>
+            </tr>
+            <tr>
+                <td>Підтримка операцій</td>
+                <td>CRUD (Create, Read, Update, Delete)</td>
+                <td>Підтримує складніші операції</td>
+            </tr>
+            <tr>
+                <td>Швидкість</td>
+                <td>Швидший, менше навантаження</td>
+                <td>Повільніший через великий розмір повідомлень</td>
+            </tr>
+            <tr>
+                <td>Безпека</td>
+                <td>Використовує HTTPS, OAuth</td>
+                <td>Вбудовані стандарти безпеки WS-Security</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
