@@ -51,12 +51,79 @@
 
     <h2>2. Rest Assured</h2>
     <p>Rest Assured — це бібліотека для автоматизації тестування REST API. Вона дозволяє виконувати HTTP-запити (GET, POST, PUT, DELETE) і перевіряти відповіді.</p>
-    <p><strong>Приклад:</strong></p>
-    <code>
-        given().baseUri("https://api.example.com")<br>
-        .when().get("/users")<br>
-        .then().statusCode(200).body("size()", greaterThan(0));
-    </code>
+    <p><strong>REST Assured</strong> — це бібліотека Java для тестування RESTful API. Вона дозволяє легко створювати автоматизовані тести для API, використовуючи читабельний і зручний синтаксис, орієнтований на HTTP-запити та відповіді.</p>
+
+    <h2>Особливості REST Assured:</h2>
+    <ul>
+        <li><strong>Простий синтаксис:</strong> Бібліотека надає DSL (Domain-Specific Language), який робить тестування API інтуїтивно зрозумілим.</li>
+        <li><strong>JSON та XML підтримка:</strong> REST Assured дозволяє зручно працювати з JSON та XML, в тому числі перевіряти структуру та значення у відповіді.</li>
+        <li><strong>Гнучкі твердження:</strong> Підтримує використання тверджень (assertions) для перевірки статус-кодів, заголовків, тіла відповіді тощо.</li>
+        <li><strong>Інтеграція з тестовими фреймворками:</strong> Легко інтегрується з TestNG, JUnit та іншими бібліотеками.</li>
+        <li><strong>Підтримка аутентифікації:</strong> REST Assured підтримує різні методи аутентифікації, включаючи Basic Auth, OAuth 2.0 тощо.</li>
+    </ul>
+
+    <h2>Приклад використання REST Assured:</h2>
+    <p>Розглянемо простий приклад, де тестуємо GET-запит для отримання списку користувачів:</p>
+    <pre><code>
+import io.restassured.RestAssured;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+public class ApiTest {
+    public void testGetUsers() {
+        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+
+        given().
+            log().all().
+        when().
+            get("/users").
+        then().
+            log().all().
+            assertThat().
+            statusCode(200).
+            body("size()", greaterThan(0)).
+            body("[0].email", notNullValue());
+    }
+}
+    </code></pre>
+
+    <h2>Ключові методи:</h2>
+    <ul>
+        <li><strong>given():</strong> Вказує попередні умови (наприклад, параметри, заголовки, тіло запиту).</li>
+        <li><strong>when():</strong> Виконує HTTP-запит (GET, POST, PUT, DELETE).</li>
+        <li><strong>then():</strong> Перевіряє (asserts) відповідь сервера (статус-коди, тіло, заголовки).</li>
+    </ul>
+
+    <h2>Підтримка аутентифікації:</h2>
+    <p>REST Assured дозволяє використовувати різні типи аутентифікації, наприклад:</p>
+    <ul>
+        <li>Basic Authentication:</li>
+        <pre><code>
+given().
+    auth().
+    basic("username", "password").
+when().
+    get("/secure-endpoint").
+then().
+    statusCode(200);
+        </code></pre>
+        <li>Bearer Token:</li>
+        <pre><code>
+given().
+    header("Authorization", "Bearer your_token_here").
+when().
+    get("/secure-endpoint").
+then().
+    statusCode(200);
+        </code></pre>
+    </ul>
+
+    <h2>Чому варто використовувати REST Assured?</h2>
+    <ul>
+        <li><strong>Легкість використання:</strong> Зрозумілий API для роботи з HTTP-запитами та відповідями.</li>
+        <li><strong>Інтеграція з CI/CD:</strong> REST Assured легко інтегрується у пайплайни Continuous Integration/Continuous Deployment.</li>
+        <li><strong>Автоматизація:</strong> Ідеально підходить для написання регресійних та функціональних тестів API.</li>
+    </ul>
 
     <h2>3. Selenide</h2>
     <p>Selenide — це фреймворк для автоматизації UI тестів на основі Selenium. Він забезпечує простий API, автоматичне очікування елементів і більше зручності при роботі з веб-додатками.</p>
@@ -106,11 +173,67 @@
 
     <h2>7. Kubernetes (k8s)</h2>
     <p>Kubernetes — це платформа для управління контейнерами. Вона автоматизує масштабування, деплой і оновлення додатків.</p>
-    <p><strong>Приклад:</strong></p>
-    <code>
-        kubectl get pods<br>
-        kubectl apply -f deployment.yaml
-    </code>
+    <ol>
+        <li><strong>Що таке Kubernetes?</strong>
+            <p>Kubernetes — це open-source платформа для оркестрації контейнеризованих додатків. Вона дозволяє автоматизувати розгортання, управління та масштабування контейнерів.</p>
+        </li>
+        <li><strong>Контейнери та Docker</strong>
+            <p>Kubernetes працює з контейнерами (зазвичай Docker), які ізолюють додатки та їх залежності, забезпечуючи консистентність середовищ незалежно від платформи.</p>
+        </li>
+        <li><strong>Архітектура Kubernetes:</strong>
+            <ul>
+                <li><strong>Кластер:</strong> основна структура, що складається з:
+                    <ul>
+                        <li><strong>Control Plane (План управління):</strong> керує всією інфраструктурою.</li>
+                        <li><strong>Worker Nodes (Робочі вузли):</strong> виконують додатки у вигляді контейнерів.</li>
+                    </ul>
+                </li>
+                <li><strong>ETCD:</strong> розподілена база даних, що зберігає стан кластера.</li>
+                <li><strong>Kube-apiserver:</strong> головний компонент для API-запитів.</li>
+                <li><strong>Kube-scheduler:</strong> визначає, на якому вузлі запускати додатки.</li>
+                <li><strong>Kubelet:</strong> агент, який працює на кожному вузлі, забезпечуючи роботу контейнерів.</li>
+            </ul>
+        </li>
+        <li><strong>Основні компоненти:</strong>
+            <ul>
+                <li><strong>Pods:</strong> Мінімальна одиниця розгортання в Kubernetes, яка може містити один або кілька контейнерів.</li>
+                <li><strong>Services:</strong> Дають стабільну IP-адресу та DNS-ім’я для доступу до подів.</li>
+                <li><strong>Namespaces:</strong> Використовуються для розділення ресурсів у кластері.</li>
+                <li><strong>Deployments:</strong> Визначають, як і де повинні розгортатися поди.</li>
+                <li><strong>ConfigMaps і Secrets:</strong> Дозволяють управляти конфігураціями та чутливими даними окремо від коду.</li>
+            </ul>
+        </li>
+        <li><strong>Автоматизація:</strong>
+            <p>Kubernetes автоматизує балансування навантаження, відновлення після збоїв, масштабування подів відповідно до навантаження та оновлення додатків без простоїв.</p>
+        </li>
+        <li><strong>Масштабованість:</strong>
+            <p>Kubernetes дозволяє автоматично збільшувати або зменшувати кількість подів залежно від використання ресурсів (CPU, RAM) або інших метрик.</p>
+        </li>
+        <li><strong>Моніторинг і логування:</strong>
+            <p>Kubernetes інтегрується з такими інструментами, як Prometheus, Grafana, Fluentd, для збору та відображення метрик і логів.</p>
+        </li>
+        <li><strong>Сумісність із хмарними провайдерами:</strong>
+            <p>Kubernetes працює на різних хмарних платформах (AWS, Azure, GCP) та в локальних середовищах (on-premise).</p>
+        </li>
+        <li><strong>Інструменти для управління:</strong>
+            <ul>
+                <li><strong>Kubectl:</strong> CLI для роботи з кластерами Kubernetes.</li>
+                <li><strong>Helm:</strong> Менеджер пакетів для управління складними додатками.</li>
+                <li><strong>K9s:</strong> TUI-інструмент для спрощення управління кластером.</li>
+            </ul>
+        </li>
+        <li><strong>Основні переваги:</strong>
+            <ul>
+                <li>Уніфіковане управління контейнеризованими додатками.</li>
+                <li>Підтримка безперервної інтеграції та доставки (CI/CD).</li>
+                <li>Економія ресурсів через автоматизацію.</li>
+                <li>Стабільність і відмовостійкість.</li>
+            </ul>
+        </li>
+        <li><strong>Чому Kubernetes називають "k8s"?</strong>
+            <p>Скорочення "k8s" означає "Kubernetes", де "8" — це кількість літер між "k" і "s".</p>
+        </li>
+    </ol>
 
     <h2>8. Allure</h2>
     <p>Allure — це інструмент для створення наглядних репортів автоматизованих тестів. Він інтегрується з TestNG, JUnit, Pytest та іншими фреймворками.</p>
@@ -153,9 +276,62 @@
     <h2>13. Клієнт-серверна архітектура</h2>
     <p>Архітектура, де клієнт запитує дані, а сервер відповідає. Приклад: браузер надсилає запит до веб-сайту.</p>
 
-    <h2>14. REST</h2>
-    <p>REST — це стиль роботи з API, який базується на HTTP-запитах (GET, POST, PUT, DELETE).</p>
-    <p><strong>Приклад:</strong> <code>GET /users</code></p>
+    <h2>14. Що таке REST?</h2>
+    <p><strong>REST</strong> (Representational State Transfer) — це архітектурний стиль для побудови веб-сервісів, який використовує HTTP для взаємодії між клієнтом і сервером. REST API забезпечує спосіб доступу до ресурсів через стандартні HTTP-методи (GET, POST, PUT, DELETE тощо).</p>
+
+    <h2>Ключові принципи REST:</h2>
+    <ul>
+        <li><strong>Ресурси:</strong> Кожен ресурс ідентифікується унікальним URI (наприклад, <code>/users/1</code> для користувача з ID 1).</li>
+        <li><strong>Стандартизовані методи:</strong> HTTP-методи (GET, POST, PUT, DELETE) відповідають CRUD-операціям (Create, Read, Update, Delete).</li>
+        <li><strong>Безстанова взаємодія:</strong> Сервер не зберігає стану клієнта між запитами, кожен запит повинен містити всю необхідну інформацію.</li>
+        <li><strong>Формати:</strong> Дані зазвичай передаються у форматі JSON або XML.</li>
+    </ul>
+
+    <h2>Відмінність між GET і POST:</h2>
+    <ul>
+        <li><strong>GET:</strong>
+            <ul>
+                <li>Призначений для отримання (читання) даних з сервера.</li>
+                <li>Не змінює стан ресурсу.</li>
+                <li>Дані передаються у URL (наприклад, <code>/api/v1/users?name=John</code>).</li>
+                <li>Безпечний і ідемпотентний (повторні запити не змінюють результат).</li>
+            </ul>
+        </li>
+        <li><strong>POST:</strong>
+            <ul>
+                <li>Призначений для створення нових ресурсів на сервері.</li>
+                <li>Дані передаються у тілі запиту (body).</li>
+                <li>Змінює стан сервера (додає нові записи).</li>
+                <li>Не є ідемпотентним (повторний запит може створити кілька однакових ресурсів).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Відмінність між PUT і PATCH:</h2>
+    <ul>
+        <li><strong>PUT:</strong>
+            <ul>
+                <li>Призначений для повного оновлення ресурсу.</li>
+                <li>Вимагає передачі всіх полів ресурсу, навіть тих, які не змінюються.</li>
+                <li>Ідемпотентний (повторний запит дає той самий результат).</li>
+                <li>Наприклад, якщо ресурс <code>/users/1</code> виглядає так:
+                    <pre>{"name": "John", "email": "john@example.com"}</pre>
+                    і потрібно змінити ім'я, доведеться передати:
+                    <pre>{"name": "John Doe", "email": "john@example.com"}</pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>PATCH:</strong>
+            <ul>
+                <li>Призначений для часткового оновлення ресурсу.</li>
+                <li>Достатньо передати тільки ті поля, які змінюються.</li>
+                <li>Не завжди ідемпотентний, залежить від реалізації.</li>
+                <li>Наприклад, для зміни тільки імені ресурсу <code>/users/1</code> можна передати:
+                    <pre>{"name": "John Doe"}</pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
 
     <p>REST і SOAP — це протоколи для взаємодії між серверами та клієнтами.</p>
     <table>
