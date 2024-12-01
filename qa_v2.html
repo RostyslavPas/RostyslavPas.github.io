@@ -2,452 +2,68 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>QA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про мене — Ростислав Пас</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 20px;
+            background-color: #f9f9f9;
         }
         h1, h2 {
-            color: #333;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 10px;
+            color: #2c3e50;
         }
-        .topic {
-            background-color: #f4f4f4;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
         }
-        .example {
-            background-color: #e9e9e9;
-            padding: 10px;
-            border-left: 4px solid #666;
+        li {
+            margin: 5px 0;
+        }
+        p {
             margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <h1>QA</h1>
+    <p>
+        Я QA Engineer із досвідом понад 10 років у сфері тестування програмного забезпечення. За цей час я працював у різних галузях, таких як Enterprise, Marketing, Product, і трохи AI:
+        що дало мені змогу отримати багатогранний досвід і глибоке розуміння різних типів продуктів і користувачів.
+    </p>
 
-    <div class="topic">
-        <h2>1. Аннотації (Annotations)</h2>
-        <p>Мітки метаданих, що додаються до коду для надання додаткової інформації компілятору чи середовищу виконання.</p>
-        <div class="example">
-            <pre><code>
-// Приклад анотацій
-@Override // Перевизначення методу батьківського класу
-@Test // Позначення тестового методу в JUnit
-@Deprecated // Позначення застарілого методу
-public void myMethod() {
-    // Код методу
-}
-            </code></pre>
-        </div>
-    </div>
+    <h2>Основні навички</h2>
+    <p>
+        <li>Основні мови програмування, які я використовую у своїй роботі, — це Java та Python. </li>
+        <li>Я маю великий досвід роботи з популярними інструментами автоматизації, такими як Selenium, Selenide, PyTest, Junit, Jenkins, Docker, </li>
+        <li>а також інструментами API-тестування, як-от Requests і Swagger. Завдяки цьому я легко працюю з автоматизацією як UI, так і API.</li>
+        <li>Також є досвід в написанні фрейморків для робори з REST API</li>
+        <li>Також конфігурував Пайплайни для запуску автотестів в Github CI, що включала в себе генерацію Allure репортів та відправку результатів тестів в телеграм чи slack</li>
+    </p>
 
-    <div class="topic">
-        <h2>2. Rest Assured</h2>
-        <p>Бібліотека для тестування REST API в Java</p>
-        <div class="example">
-            <pre><code>
-given()
-    .baseUri("https://api.example.com")
-    .when()
-    .get("/users")
-    .then()
-    .statusCode(200)
-    .body("size()", greaterThan(0));
-            </code></pre>
-        </div>
-    </div>
+    <h3>Мої спеціалізації:</h3>
+    <ul>
+        <li>Розробка автоматизованих тестів і тестової документації, чеклісти та тест-кейси.</li>
+        <li>Планування тестового процесу, оцінювання пріоритетів і ризиків.</li>
+        <li>Проведення регресійного, функціонального, смок-тестування.</li>
+        <li>Активна взаємодія з командами розробників для швидкого вирішення багів і уточнення вимог.</li>
+    </ul>
 
-    <div class="topic">
-        <h2>3. Selenide</h2>
-        <p>Фреймворк для автоматизації тестування на основі Selenium WebDriver</p>
-        <div class="example">
-            <pre><code>
-// Приклад використання Selenide
-@Test
-public void testLogin() {
-    open("https://example.com");
-    $("#username").setValue("testuser");
-    $("#password").setValue("password");
-    $("#login-button").click();
-    $(".success-message").shouldBe(visible);
-}
-            </code></pre>
-        </div>
-    </div>
+    <h2>Досвід роботи</h2>
+    <ul>
+        <li><b>SandSIV Group:</b> створення складної системи Voice of the Customer, автоматизація UI та API, оптимізація тестових процесів.</li>
+        <li><b>Adsy:</b> тестування маркетингових інструментів, інтеграція платіжних систем, автоматизація специфічних для компанії процесів.</li>
+        <li><b>Kadam:</b> керівництво QA-відділом, менторство молодших співробітників, забезпечення якості рекламної платформи.</li>
+    </ul>
 
-    <div class="topic">
-        <h2>4. Паралелізація (Parallelization)</h2>
-        <p>Виконання тестів одночасно для прискорення процесу тестування</p>
-        <div class="example">
-            <pre><code>
-// Приклад у JUnit 5
-@Execution(ExecutionMode.CONCURRENT)
-public class ParallelTests {
-    @Test
-    public void test1() { /* ... */ }
-
-    @Test
-    public void test2() { /* ... */ }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>5. CI/CD (Continuous Integration/Continuous Deployment)</h2>
-        <p>Практика автоматизації процесів збірки, тестування та розгортання додатків</p>
-        <div class="example">
-            <pre><code>
-# Приклад Jenkins pipeline
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                mvn clean package
-            }
-        }
-        stage('Test') {
-            steps {
-                mvn test
-            }
-        }
-        stage('Deploy') {
-            steps {
-                deploy to: 'production'
-            }
-        }
-    }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>6. GitLab</h2>
-        <p>Платформа для управління Git-репозиторіями з функціями CI/CD</p>
-        <div class="example">
-            <pre><code>
-# Приклад .gitlab-ci.yml
-stages:
-  - build
-  - test
-  - deploy
-
-build:
-  stage: build
-  script:
-    - mvn compile
-
-test:
-  stage: test
-  script:
-    - mvn test
-
-deploy:
-  stage: deploy
-  script:
-    - mvn deploy
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>7. Kubernetes (k8s)</h2>
-        <p>Система управління контейнеризованими додатками</p>
-        <div class="example">
-            <pre><code>
-# Приклад deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-app
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: my-app
-  template:
-    metadata:
-      labels:
-        app: my-app
-    spec:
-      containers:
-      - name: my-app
-        image: my-app:latest
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>8. Allure</h2>
-        <p>Фреймворк для генерації звітів про тестування</p>
-        <div class="example">
-            <pre><code>
-@Test
-@Description("Перевірка реєстрації користувача")
-public void testUserRegistration() {
-    // Тестовий код
-    Allure.step("Введення даних", () -> {
-        // Крок тесту
-    });
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>9. Сліпи (Sleeps)</h2>
-        <p>Тимчасова затримка виконання коду</p>
-        <div class="example">
-            <pre><code>
-// Не рекомендується часто використовувати
-Thread.sleep(1000); // Затримка на 1 секунду
-
-// Краще використовувати явні очікування
-WebDriverWait wait = new WebDriverWait(driver, 10);
-wait.until(ExpectedConditions.elementToBeClickable(locator));
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>10. Логи (Logs)</h2>
-        <p>Запис подій та повідомлень для діагностики</p>
-        <div class="example">
-            <pre><code>
-// Використання Log4j
-private static final Logger logger = LogManager.getLogger(MyClass.class);
-
-public void myMethod() {
-    logger.info("Початок методу");
-    try {
-        // Код методу
-        logger.debug("Проміжний стан");
-    } catch (Exception e) {
-        logger.error("Помилка: ", e);
-    }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>11. Ретраї (Retries)</h2>
-        <p>Повторні спроби виконання операції</p>
-        <div class="example">
-            <pre><code>
-// Приклад ретраю в тестуванні
-@Test
-@Retryable(maxAttempts = 3,
-           backoff = @Backoff(delay = 1000))
-public void testFluckyOperation() {
-    // Код, який може fail'нутися
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>12. Техніки Тест-Дизайну</h2>
-        <ul>
-            <li><strong>Еквівалентне розділення:</strong> Групування вхідних даних на класи</li>
-            <li><strong>Аналіз граничних значень:</strong> Тестування на межах діапазонів</li>
-            <li><strong>Таблиця рішень:</strong> Тестування комбінацій умов</li>
-            <li><strong>Попарне тестування:</strong> Перевірка всіх можливих комбінацій парметрів</li>
-        </ul>
-    </div>
-
-    <div class="topic">
-        <h2>13. Клієнт-Серверна Архітектура</h2>
-        <p>Модель взаємодії, де клієнт надсилає запити, а сервер обробляє їх</p>
-        <div class="example">
-            <pre><code>
-// Приклад клієнта
-public class HttpClient {
-    public String sendRequest(String url) {
-        // Надсилання HTTP-запиту
-        return response;
-    }
-}
-
-// Приклад серверу (спрощено)
-public class Server {
-    public String handleRequest(String request) {
-        // Обробка запиту
-        return response;
-    }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>14. REST (Representational State Transfer)</h2>
-        <p>Архітектурний стиль для створення веб-сервісів</p>
-        <div class="example">
-            <pre><code>
-// Приклад REST-ендпоінту
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userService.findById(id);
-    }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>15. SOAP (Simple Object Access Protocol)</h2>
-        <p>Протокол обміну структурованими даними</p>
-        <div class="example">
-            <pre><code>
-// Приклад SOAP-запиту (XML)
-<soapenv:Envelope>
-   <soapenv:Body>
-      <GetUser>
-         <userId>123</userId>
-      </GetUser>
-   </soapenv:Body>
-</soapenv:Envelope>
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>16. Різниця між REST і SOAP</h2>
-        <table border="1">
-            <tr>
-                <th>Параметр</th>
-                <th>REST</th>
-                <th>SOAP</th>
-            </tr>
-            <tr>
-                <td>Формат</td>
-                <td>JSON/XML</td>
-                <td>Тільки XML</td>
-            </tr>
-            <tr>
-                <td>Протокол</td>
-                <td>HTTP/HTTPS</td>
-                <td>HTTP, SMTP, TCP</td>
-            </tr>
-            <tr>
-                <td>Складність</td>
-                <td>Простіший</td>
-                <td>Складніший</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="topic">
-        <h2>17. Різниця між GET і POST</h2>
-        <table border="1">
-            <tr>
-                <th>GET</th>
-                <th>POST</th>
-            </tr>
-            <tr>
-                <td>Передача даних у URL</td>
-                <td>Передача даних у тілі запиту</td>
-            </tr>
-            <tr>
-                <td>Кешується</td>
-                <td>Не кешується</td>
-            </tr>
-            <tr>
-                <td>Обмеження на довжину</td>
-                <td>Немає обмежень на розмір</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="topic">
-        <h2>18. WebSocket</h2>
-        <p>Протокол повнодуплексного зв'язку через один TCP-соединение</p>
-        <div class="example">
-            <pre><code>
-@ServerEndpoint("/chat")
-public class ChatEndpoint {
-    @OnMessage
-    public void onMessage(String message, Session session) {
-        // Обробка вхідного WebSocket повідомлення
-    }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>19. ООП (Об'єктно-Орієнтоване Програмування)</h2>
-        <p>Парадигма програмування, що базується на концепції "об'єктів"</p>
-        <div class="example">
-            <pre><code>
-public class Animal {
-    private String name;
-
-    public void makeSound() {
-        System.out.println("Some sound");
-    }
-}
-
-public class Dog extends Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("Bark");
-    }
-}
-            </code></pre>
-        </div>
-    </div>
-
-    <div class="topic">
-        <h2>20. Різниця між Java і Python</h2>
-        <table border="1">
-            <tr>
-                <th>Параметр</th>
-                <th>Java</th>
-                <th>Python</th>
-            </tr>
-            <tr>
-                <td>Типізація</td>
-                <td>Статична</td>
-                <td>Динамічна</td>
-            </tr>
-            <tr>
-                <td>Синтаксис</td>
-                <td>Багатослівний</td>
-                <td>Лаконічний</td>
-            </tr>
-            <tr>
-                <td>Приклад коду</td>
-                <td><pre>public void method() {
-    int x = 5;
-}</pre></td>
-                <td><pre>def method():
-    x = 5</pre></td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="topic">
-        <h2>21. Колекції Java</h2>
-        <ul>
-            <li><strong>List:</strong> ArrayList, LinkedList</li>
-            <li><strong>Set:</strong> HashSet, TreeSet</li>
-            <li><strong>Map:</strong> HashMap, TreeMap</li>
-        </ul>
-        <div class="example">
-            <pre><code>
-List
+    <h2>Про мене</h2>
+    <p>
+        <li>Я вважаю своєю ключовою перевагою вміння не лише розробляти та впроваджувати автоматизацію, а й аналізувати,</li>
+        <li>де саме вона найбільш ефективна, а також шукати області для покращення.</li>
+    </p>
+    <p>
+        <li>Для мене головне — це зробити процес тестування не просто обов’язковим етапом, а надійним інструментом для досягнення високої якості продукту.</li>
+        <li>Я постійно вчуся, удосконалюю свої навички та впроваджую нові технології, щоб залишатися актуальним у сучасній сфері розробки ПЗ.</li>
+    </p>
+</body>
+</html>

@@ -61,61 +61,11 @@
         <li><strong>Інтеграція з тестовими фреймворками:</strong> Легко інтегрується з TestNG, JUnit та іншими бібліотеками.</li>
         <li><strong>Підтримка аутентифікації:</strong> REST Assured підтримує різні методи аутентифікації, включаючи Basic Auth, OAuth 2.0 тощо.</li>
     </ul>
-
-    <h2>Приклад використання REST Assured:</h2>
-    <p>Розглянемо простий приклад, де тестуємо GET-запит для отримання списку користувачів:</p>
-    <pre><code>
-import io.restassured.RestAssured;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
-public class ApiTest {
-    public void testGetUsers() {
-        RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
-
-        given().
-            log().all().
-        when().
-            get("/users").
-        then().
-            log().all().
-            assertThat().
-            statusCode(200).
-            body("size()", greaterThan(0)).
-            body("[0].email", notNullValue());
-    }
-}
-    </code></pre>
-
     <h2>Ключові методи:</h2>
     <ul>
         <li><strong>given():</strong> Вказує попередні умови (наприклад, параметри, заголовки, тіло запиту).</li>
         <li><strong>when():</strong> Виконує HTTP-запит (GET, POST, PUT, DELETE).</li>
         <li><strong>then():</strong> Перевіряє (asserts) відповідь сервера (статус-коди, тіло, заголовки).</li>
-    </ul>
-
-    <h2>Підтримка аутентифікації:</h2>
-    <p>REST Assured дозволяє використовувати різні типи аутентифікації, наприклад:</p>
-    <ul>
-        <li>Basic Authentication:</li>
-        <pre><code>
-given().
-    auth().
-    basic("username", "password").
-when().
-    get("/secure-endpoint").
-then().
-    statusCode(200);
-        </code></pre>
-        <li>Bearer Token:</li>
-        <pre><code>
-given().
-    header("Authorization", "Bearer your_token_here").
-when().
-    get("/secure-endpoint").
-then().
-    statusCode(200);
-        </code></pre>
     </ul>
 
     <h2>Чому варто використовувати REST Assured?</h2>
@@ -174,25 +124,8 @@ then().
     <h2>7. Kubernetes (k8s)</h2>
     <p>Kubernetes — це платформа для управління контейнерами. Вона автоматизує масштабування, деплой і оновлення додатків.</p>
     <ol>
-        <li><strong>Що таке Kubernetes?</strong>
-            <p>Kubernetes — це open-source платформа для оркестрації контейнеризованих додатків. Вона дозволяє автоматизувати розгортання, управління та масштабування контейнерів.</p>
-        </li>
         <li><strong>Контейнери та Docker</strong>
             <p>Kubernetes працює з контейнерами (зазвичай Docker), які ізолюють додатки та їх залежності, забезпечуючи консистентність середовищ незалежно від платформи.</p>
-        </li>
-        <li><strong>Архітектура Kubernetes:</strong>
-            <ul>
-                <li><strong>Кластер:</strong> основна структура, що складається з:
-                    <ul>
-                        <li><strong>Control Plane (План управління):</strong> керує всією інфраструктурою.</li>
-                        <li><strong>Worker Nodes (Робочі вузли):</strong> виконують додатки у вигляді контейнерів.</li>
-                    </ul>
-                </li>
-                <li><strong>ETCD:</strong> розподілена база даних, що зберігає стан кластера.</li>
-                <li><strong>Kube-apiserver:</strong> головний компонент для API-запитів.</li>
-                <li><strong>Kube-scheduler:</strong> визначає, на якому вузлі запускати додатки.</li>
-                <li><strong>Kubelet:</strong> агент, який працює на кожному вузлі, забезпечуючи роботу контейнерів.</li>
-            </ul>
         </li>
         <li><strong>Основні компоненти:</strong>
             <ul>
@@ -201,33 +134,6 @@ then().
                 <li><strong>Namespaces:</strong> Використовуються для розділення ресурсів у кластері.</li>
                 <li><strong>Deployments:</strong> Визначають, як і де повинні розгортатися поди.</li>
                 <li><strong>ConfigMaps і Secrets:</strong> Дозволяють управляти конфігураціями та чутливими даними окремо від коду.</li>
-            </ul>
-        </li>
-        <li><strong>Автоматизація:</strong>
-            <p>Kubernetes автоматизує балансування навантаження, відновлення після збоїв, масштабування подів відповідно до навантаження та оновлення додатків без простоїв.</p>
-        </li>
-        <li><strong>Масштабованість:</strong>
-            <p>Kubernetes дозволяє автоматично збільшувати або зменшувати кількість подів залежно від використання ресурсів (CPU, RAM) або інших метрик.</p>
-        </li>
-        <li><strong>Моніторинг і логування:</strong>
-            <p>Kubernetes інтегрується з такими інструментами, як Prometheus, Grafana, Fluentd, для збору та відображення метрик і логів.</p>
-        </li>
-        <li><strong>Сумісність із хмарними провайдерами:</strong>
-            <p>Kubernetes працює на різних хмарних платформах (AWS, Azure, GCP) та в локальних середовищах (on-premise).</p>
-        </li>
-        <li><strong>Інструменти для управління:</strong>
-            <ul>
-                <li><strong>Kubectl:</strong> CLI для роботи з кластерами Kubernetes.</li>
-                <li><strong>Helm:</strong> Менеджер пакетів для управління складними додатками.</li>
-                <li><strong>K9s:</strong> TUI-інструмент для спрощення управління кластером.</li>
-            </ul>
-        </li>
-        <li><strong>Основні переваги:</strong>
-            <ul>
-                <li>Уніфіковане управління контейнеризованими додатками.</li>
-                <li>Підтримка безперервної інтеграції та доставки (CI/CD).</li>
-                <li>Економія ресурсів через автоматизацію.</li>
-                <li>Стабільність і відмовостійкість.</li>
             </ul>
         </li>
         <li><strong>Чому Kubernetes називають "k8s"?</strong>
@@ -265,13 +171,16 @@ then().
         @Test(retryAnalyzer = RetryAnalyzer.class)
     </code>
 
-    <h2>12. Техніки тест-дизайну</h2>
-    <p>Це методи створення ефективних тест-кейсів, такі як:</p>
-    <ul>
-        <li>Еквівалентне розбиття.</li>
-        <li>Аналіз граничних значень.</li>
-        <li>Метод причин і наслідків.</li>
-    </ul>
+    <h2>12. Техніки Тест-Дизайну</h2>
+        <ul>
+            <li><strong>Еквівалентне розділення:</strong> Групування вхідних даних на класи</li>
+            <li><strong>Аналіз граничних значень:</strong> Тестування на межах діапазонів</li>
+            <li><strong>Таблиця рішень:</strong> Тестування комбінацій умов</li>
+            <li><strong>Попарне тестування:</strong> Перевірка всіх можливих комбінацій парметрів</li>
+        </ul>
+    </div>
+
+    <div class="topic">
 
     <h2>14. Що таке REST?</h2>
     <p><strong>REST</strong> (Representational State Transfer) — це архітектурний стиль для побудови веб-сервісів, який використовує HTTP для взаємодії між клієнтом і сервером. REST API забезпечує спосіб доступу до ресурсів через стандартні HTTP-методи (GET, POST, PUT, DELETE тощо).</p>
@@ -424,54 +333,6 @@ public class Dog extends Animal {<br>
 }
     </code>
 
-    <h2>Відмінності між інтерфейсом та абстрактним класом</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Критерій</th>
-                <th>Інтерфейс</th>
-                <th>Абстрактний клас</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Мета</td>
-                <td>Описує контракт (що повинно бути зроблено).</td>
-                <td>Служить базовим класом із можливістю часткової реалізації.</td>
-            </tr>
-            <tr>
-                <td>Реалізація методів</td>
-                <td>Методи без реалізації (до Java 8). Може мати <code>default</code> методи (з Java 8).</td>
-                <td>Може містити як реалізовані, так і абстрактні методи.</td>
-            </tr>
-            <tr>
-                <td>Множинне успадкування</td>
-                <td>Клас може реалізовувати кілька інтерфейсів.</td>
-                <td>Клас може успадковувати лише один абстрактний клас.</td>
-            </tr>
-            <tr>
-                <td>Поле</td>
-                <td>Тільки <code>static</code> і <code>final</code> (константи).</td>
-                <td>Може містити будь-які змінні.</td>
-            </tr>
-            <tr>
-                <td>Конструктори</td>
-                <td>Не може мати конструкторів.</td>
-                <td>Може мати конструктори.</td>
-            </tr>
-            <tr>
-                <td>Де використовується</td>
-                <td>Коли потрібна багатоспадковість та спільний контракт для різних класів.</td>
-                <td>Коли потрібна базова реалізація для групи пов'язаних класів.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Коли використовувати?</h2>
-    <ul>
-        <li>Використовуйте <strong>інтерфейс</strong>, якщо хочете задати лише контракт для реалізації.</li>
-        <li>Використовуйте <strong>абстрактний клас</strong>, якщо хочете забезпечити базову реалізацію, яку можуть розширювати дочірні класи.</li>
-    </ul>
     <h2>Типи даних у Java</h2>
     <p>У Java підтримуються два види типів даних: примітивні та посилальні. Нижче наведено деталі:</p>
 
@@ -686,6 +547,178 @@ public class Dog extends Animal {<br>
             </ul>
         </li>
     </ul>
+    <h2>Які протоколи передачі даних знаєте?</h2>
+    <ul>
+        <li>HTTP/HTTPS</li>
+        <li>FTP</li>
+        <li>WebSocket</li>
+        <li>gRPC</li>
+        <li>SMTP</li>
+    </ul>
+
+    <h2>Як можна протестувати API, що там потрібно перевіряти?</h2>
+    <ul>
+        <li>Коректність статус-кодів (200, 404, 500).</li>
+        <li>Правильність даних у відповіді.</li>
+        <li>Валідність форматів (JSON, XML).</li>
+        <li>Продуктивність (затримки, обробка великого навантаження).</li>
+        <li>Безпека (авторизація, вразливості).</li>
+    </ul>
+
+    <h2>Які знаєте формати передачі даних?</h2>
+    <ul>
+        <li>JSON</li>
+        <li>XML</li>
+        <li>YAML</li>
+        <li>Protocol Buffers (Protobuf)</li>
+        <li>CSV</li>
+    </ul>
+
+    <h2>Як відбувається шифрування?</h2>
+    <p>Шифрування забезпечує перетворення даних у зашифрований формат. Приклади:</p>
+    <ul>
+        <li>Симетричне шифрування: AES.</li>
+        <li>Асиметричне шифрування: RSA.</li>
+    </ul>
+
+    <h2>Які бувають види баз даних?</h2>
+    <ul>
+        <li>Реляційні (MySQL, PostgreSQL).</li>
+        <li>NoSQL (MongoDB, Cassandra).</li>
+        <li>Графові (Neo4j).</li>
+        <li>Ключ-значення (Redis).</li>
+    </ul>
+
+    <h2>Охарактеризуйте кожен клас статус-кодів HTTP (1xx; 2xx; 3xx; 4xx; 5xx).</h2>
+    <ul>
+        <li><strong>1xx</strong>: Інформаційні (запит отримано).</li>
+        <li><strong>2xx</strong>: Успішні (200 OK).</li>
+        <li><strong>3xx</strong>: Перенаправлення (301 Moved Permanently).</li>
+        <li><strong>4xx</strong>: Помилки клієнта (404 Not Found).</li>
+        <li><strong>5xx</strong>: Помилки сервера (500 Internal Server Error).</li>
+    </ul>
+
+    <h2>Що таке кеш?</h2>
+    <p>Кеш — це тимчасове збереження даних для швидшого доступу.</p>
+
+    <h2>Що таке сесія?</h2>
+    <p>Сесія — це період взаємодії між клієнтом і сервером збереженням стану.</p>
+
+    <h2>Навіщо потрібні cookies?</h2>
+    <p>Cookies зберігають дані користувача для персоналізації або авторизації.</p>
+
+    <h2>Які assertions є в TestNG/JUnit?</h2>
+    <p>Assertions дозволяють перевіряти очікувані результати:</p>
+    <ul>
+        <li><code>assertEquals(actual, expected)</code>: Перевіряє рівність.</li>
+        <li><code>assertNotEquals(actual, expected)</code>: Перевіряє нерівність.</li>
+        <li><code>assertTrue(condition)</code>: Перевіряє, що умова <code>true</code>.</li>
+        <li><code>assertFalse(condition)</code>: Перевіряє, що умова <code>false</code>.</li>
+        <li><code>assertNull(object)</code>: Перевіряє, що об'єкт <code>null</code>.</li>
+        <li><code>assertNotNull(object)</code>: Перевіряє, що об'єкт не <code>null</code>.</li>
+    </ul>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        Assert.assertEquals(sum(2, 2), 4, "Sum calculation failed");
+    </code>
+
+    <h2>Для чого потрібні GitHub, GitLab?</h2>
+    <p>Це хостингові платформи для:</p>
+    <ul>
+        <li>Зберігання репозиторіїв.</li>
+        <li>Спільної роботи над кодом.</li>
+        <li>Інтеграції з CI/CD.</li>
+    </ul>
+
+    <h2>Що таке ООП? Назвіть його принципи з прикладами.</h2>
+    <p><strong>ООП (Об’єктно-орієнтоване програмування)</strong> — це парадигма програмування, яка базується на концепції об’єктів.</p>
+    <p>Принципи:</p>
+    <ul>
+        <li><strong>Інкапсуляція</strong>: Зберігає дані приватними, надаючи доступ через методи.
+            <br><code>class Person { private String name; public String getName() { return name; } }</code>
+        </li>
+        <li><strong>Наслідування</strong>: Дозволяє одному класу використовувати властивості іншого.
+            <br><code>class Animal { } class Dog extends Animal { }</code>
+        </li>
+        <li><strong>Поліморфізм</strong>: Один метод має різну реалізацію.
+            <br><code>void speak(Animal a) { a.sound(); }</code>
+        </li>
+        <li><strong>Абстракція</strong>: Приховує складність, показуючи лише важливі деталі.
+            <br><code>abstract class Shape { abstract void draw(); }</code>
+        </li>
+    </ul>
+
+    <h2>Що таке інтерфейс? Що таке абстрактний клас? Чим вони відрізняються?</h2>
+    <p><strong>Інтерфейс</strong>: Контракт, який клас повинен реалізувати.</p>
+    <p><strong>Абстрактний клас</strong>: Клас, який може містити як абстрактні, так і конкретні методи.</p>
+    <p><strong>Відмінності:</strong></p>
+    <ul>
+        <li>Інтерфейс може містити лише абстрактні методи (до Java 8).</li>
+        <li>Абстрактний клас може мати стан (поля) і реалізовані методи.</li>
+        <li>Клас може реалізувати кілька інтерфейсів, але успадковувати лише один абстрактний клас.</li>
+    </ul>
+
+    <h2>Що таке SOLID? Наведіть приклади.</h2>
+    <p><strong>SOLID</strong> — це набір принципів для покращення дизайну програм:</p>
+    <ul>
+        <li><strong>S</strong>ingle Responsibility Principle: Один клас — одна відповідальність.</li>
+        <li><strong>O</strong>pen/Closed Principle: Клас має бути відкритий для розширення, але закритий для модифікації.</li>
+        <li><strong>L</strong>iskov Substitution Principle: Об’єкти підкласів можуть замінювати базові класи.</li>
+        <li><strong>I</strong>nterface Segregation Principle: Краще багато дрібних інтерфейсів, ніж один великий.</li>
+        <li><strong>D</strong>ependency Inversion Principle: Залежності мають бути на рівні абстракцій.</li>
+    </ul>
+    <p><strong>Приклад:</strong> Використання інтерфейсів для залежностей:</p>
+    <code>
+        interface Database { void connect(); }<br>
+        class MySQL implements Database { public void connect() { /* реалізація */ } }
+    </code>
+
+    <h2>Що таке PageObject і PageFactory?</h2>
+    <p><strong>PageObject</strong>: Патерн для організації тестового коду. Кожна сторінка додатка представлена окремим класом.</p>
+    <p><strong>PageFactory</strong>: Бібліотека Selenium для ініціалізації веб-елементів у класі PageObject.</p>
+    <p><strong>Приклад:</strong></p>
+    <code>
+        public class LoginPage {<br>
+        &nbsp;&nbsp;@FindBy(id = "username") WebElement username;<br>
+        &nbsp;&nbsp;public void login(String user) { username.sendKeys(user); }<br>
+        }
+    </code>
+
+    <h2>Яка ієрархія Collections?</h2>
+    <p>Колекції в Java:</p>
+    <ul>
+        <li><strong>List</strong>: Збереження впорядкованих елементів (<code>ArrayList, LinkedList</code>).</li>
+        <li><strong>Set</strong>: Унікальні елементи (<code>HashSet, TreeSet</code>).</li>
+        <li><strong>Queue</strong>: FIFO (<code>PriorityQueue</code>).</li>
+        <li><strong>Map</strong>: Пари ключ-значення (<code>HashMap, TreeMap</code>).</li>
+    </ul>
+
+    <h2>Колекції Java</h2>
+    <p>Колекції Java представляють групу об'єктів. Основні інтерфейси:</p>
+    <ul>
+        <li><strong>List</strong>: Зберігає впорядковані елементи (ArrayList, LinkedList).</li>
+        <li><strong>Set</strong>: Не допускає дублікатів (HashSet, TreeSet).</li>
+        <li><strong>Map</strong>: Зберігає пари "ключ-значення" (HashMap, TreeMap).</li>
+        <li><strong>Queue</strong>: Організовує елементи у чергу (PriorityQueue).</li>
+    </ul>
+
+    <h2>Ієрархія виключень у Java</h2>
+    <p>Основні класи виключень:</p>
+    <ul>
+        <li><strong>Throwable</strong>: Базовий клас для виключень і помилок.</li>
+        <li><strong>Error</strong>: Критичні помилки (OutOfMemoryError).</li>
+        <li><strong>Exception</strong>: Клас для перевірених виключень (IOException, SQLException).</li>
+        <li><strong>RuntimeException</strong>: Неперевірені виключення (NullPointerException).</li>
+    </ul>
+
+    <h2>Слово <code>static</code></h2>
+    <p>Слово <code>static</code> використовується для позначення членів класу, які належать класу, а не об'єкту.</p>
+    <p>Приклад:</p>
+    <pre>
+class Example {
+    static int count = 0;
+}
+    </pre>
 
 </body>
 </html>
