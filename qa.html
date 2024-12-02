@@ -233,79 +233,6 @@
         </li>
     </ul>
 
-
-    <h2>15. Інтерфейс та Абстрактний клас</h2>
-
-    <h2>Що таке інтерфейс?</h2>
-    <p><strong>Інтерфейс</strong> — це контракт, який визначає набір методів, які клас, що реалізує цей інтерфейс, зобов'язаний реалізувати.</p>
-    <ul>
-        <li>В інтерфейсі <strong>немає реалізації методів</strong> (за винятком можливих дефолтних методів у Java).</li>
-        <li>Інтерфейси використовуються для забезпечення багатоспадковості.</li>
-        <li>Інтерфейс лише визначає <strong>що потрібно робити</strong>, а не <strong>як це потрібно робити</strong>.</li>
-    </ul>
-
-    <h2>Що таке абстрактний клас?</h2>
-    <p><strong>Абстрактний клас</strong> — це клас, який не можна створити як об'єкт і який може містити як абстрактні методи (без реалізації), так і методи з реалізацією.</p>
-    <ul>
-        <li>Абстрактний клас використовується для задання базової поведінки, яку дочірні класи можуть розширити або перевизначити.</li>
-        <li>Може містити <strong>реалізовані та нереалізовані методи</strong>.</li>
-        <li>Підтримує конструкції, властиві звичайним класам (наприклад, конструктори).</li>
-    </ul>
-
-    <h2>Типи даних у Java</h2>
-    <p>У Java всі дані поділяються на примітивні типи (primitive types) і об’єктні типи (reference types).</p>
-
-        <li>Примітивні типи — це базові типи даних, які не є об’єктами. Вони забезпечують зберігання простих значень.</li>
-            <li>Цілі числа (byte, short, int, long)</li>
-            <li>Числа з плаваючою комою (float, double)</li>
-            <li>Символи (char)</li>
-            <li>Логічний тип (boolean)</li>
-        <li>Об’єктні типи вказують на об’єкти в пам’яті.</li>
-            <li>Зберігають посилання на об’єкти, а не значення.</li>
-            <li>Приклади: String, масиви (int[]), класи, інтерфейси.</li>
-
-
-    <h2>Операції в Java</h2>
-    <p>Java підтримує кілька груп операцій, які дозволяють маніпулювати змінними, значеннями та об'єктами.</p>
-
-    <h3>Групи операцій</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Група</th>
-                <th>Опис</th>
-                <th>Приклади</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Арифметичні</td>
-                <td>Операції для математичних обчислень</td>
-                <td><code>+, -, *, /, %</code></td>
-            </tr>
-            <tr>
-                <td>Операції порівняння</td>
-                <td>Порівнюють два значення</td>
-                <td><code>==, !=, >, <, >=, <=</code></td>
-            </tr>
-            <tr>
-                <td>Логічні</td>
-                <td>Операції для логічних умов</td>
-                <td><code>&&, ||, !</code></td>
-            </tr>
-            <tr>
-                <td>Операції присвоєння</td>
-                <td>Присвоєння значень змінним</td>
-                <td><code>=, +=, -=, *=, /=, %=</code></td>
-            </tr>
-            <tr>
-                <td>Інкремент/Декремент</td>
-                <td>Збільшення або зменшення значення на одиницю</td>
-                <td><code>++, --</code></td>
-            </tr>
-        </tbody>
-    </table>
-
         <h2>Етапи тестування</h2>
     <ul>
         <li>Аналіз requirements</li>
@@ -413,17 +340,6 @@
         <li>Відсутність помилок не гарантує придатності системи.</li>
     </ul>
 
-    <h3>Maven:</h3>
-    <ul>
-        <li><b>Навіщо Maven</b>:
-            <ul>
-                <li>Управління залежностями (Selenium, RestAssured).</li>
-                <li>Збірка та запуск тестів.</li>
-                <li>Інтеграція з CI/CD.</li>
-            </ul>
-        </li>
-    </ul>
-
     <h3>Merge-конфлікти:</h3>
     <ul>
         <li><b>Причини</b>:
@@ -521,96 +437,6 @@
         <li>Спільної роботи над кодом.</li>
         <li>Інтеграції з CI/CD.</li>
     </ul>
-
-    <h2>Що таке ООП? Назвіть його принципи з прикладами.</h2>
-    <p><strong>ООП (Об’єктно-орієнтоване програмування)</strong> — це парадигма програмування, яка базується на концепції об’єктів.</p>
-    <p>Принципи:</p>
-    <ul>
-        <li><strong>Інкапсуляція</strong>: Зберігає дані приватними, надаючи доступ через методи.
-            <br><code>class Person { private String name; public String getName() { return name; } }</code>
-        </li>
-        <li><strong>Наслідування</strong>: Дозволяє одному класу використовувати властивості іншого.
-            <br><code>class Animal { } class Dog extends Animal { }</code>
-        </li>
-        <li><strong>Поліморфізм</strong>: Один метод має різну реалізацію.
-            <br><code>void speak(Animal a) { a.sound(); }</code>
-        </li>
-        <li><strong>Абстракція</strong>: Приховує складність, показуючи лише важливі деталі.
-            <br><code>abstract class Shape { abstract void draw(); }</code>
-        </li>
-    </ul>
-
-    <h2>Що таке інтерфейс? Що таке абстрактний клас? Чим вони відрізняються?</h2>
-    <p><strong>Інтерфейс</strong>: Контракт, який клас повинен реалізувати.</p>
-    <p><strong>Абстрактний клас</strong>: Клас, який може містити як абстрактні, так і конкретні методи.</p>
-    <p><strong>Відмінності:</strong></p>
-    <ul>
-        <li>Інтерфейс може містити лише абстрактні методи (до Java 8).</li>
-        <li>Абстрактний клас може мати стан (поля) і реалізовані методи.</li>
-        <li>Клас може реалізувати кілька інтерфейсів, але успадковувати лише один абстрактний клас.</li>
-    </ul>
-
-    <h2>Що таке SOLID? Наведіть приклади.</h2>
-    <p><strong>SOLID</strong> — це набір принципів для покращення дизайну програм:</p>
-    <ul>
-        <li><strong>S</strong>ingle Responsibility Principle: Один клас — одна відповідальність.</li>
-        <li><strong>O</strong>pen/Closed Principle: Клас має бути відкритий для розширення, але закритий для модифікації.</li>
-        <li><strong>L</strong>iskov Substitution Principle: Об’єкти підкласів можуть замінювати базові класи.</li>
-        <li><strong>I</strong>nterface Segregation Principle: Краще багато дрібних інтерфейсів, ніж один великий.</li>
-        <li><strong>D</strong>ependency Inversion Principle: Залежності мають бути на рівні абстракцій.</li>
-    </ul>
-    <p><strong>Приклад:</strong> Використання інтерфейсів для залежностей:</p>
-    <code>
-        interface Database { void connect(); }<br>
-        class MySQL implements Database { public void connect() { /* реалізація */ } }
-    </code>
-
-    <h2>Що таке PageObject і PageFactory?</h2>
-    <p><strong>PageObject</strong>: Патерн для організації тестового коду. Кожна сторінка додатка представлена окремим класом.</p>
-    <p><strong>PageFactory</strong>: Бібліотека Selenium для ініціалізації веб-елементів у класі PageObject.</p>
-    <p><strong>Приклад:</strong></p>
-    <code>
-        public class LoginPage {<br>
-        &nbsp;&nbsp;@FindBy(id = "username") WebElement username;<br>
-        &nbsp;&nbsp;public void login(String user) { username.sendKeys(user); }<br>
-        }
-    </code>
-
-    <h2>Яка ієрархія Collections?</h2>
-    <p>Колекції в Java:</p>
-    <ul>
-        <li><strong>List</strong>: Збереження впорядкованих елементів (<code>ArrayList, LinkedList</code>).</li>
-        <li><strong>Set</strong>: Унікальні елементи (<code>HashSet, TreeSet</code>).</li>
-        <li><strong>Queue</strong>: FIFO (<code>PriorityQueue</code>).</li>
-        <li><strong>Map</strong>: Пари ключ-значення (<code>HashMap, TreeMap</code>).</li>
-    </ul>
-
-    <h2>Колекції Java</h2>
-    <p>Колекції Java представляють групу об'єктів. Основні інтерфейси:</p>
-    <ul>
-        <li><strong>List</strong>: Зберігає впорядковані елементи (ArrayList, LinkedList).</li>
-        <li><strong>Set</strong>: Не допускає дублікатів (HashSet, TreeSet).</li>
-        <li><strong>Map</strong>: Зберігає пари "ключ-значення" (HashMap, TreeMap).</li>
-        <li><strong>Queue</strong>: Організовує елементи у чергу (PriorityQueue).</li>
-    </ul>
-
-    <h2>Ієрархія виключень у Java</h2>
-    <p>Основні класи виключень:</p>
-    <ul>
-        <li><strong>Throwable</strong>: Базовий клас для виключень і помилок.</li>
-        <li><strong>Error</strong>: Критичні помилки (OutOfMemoryError).</li>
-        <li><strong>Exception</strong>: Клас для перевірених виключень (IOException, SQLException).</li>
-        <li><strong>RuntimeException</strong>: Неперевірені виключення (NullPointerException).</li>
-    </ul>
-
-    <h2>Слово <code>static</code></h2>
-    <p>Слово <code>static</code> використовується для позначення членів класу, які належать класу, а не об'єкту.</p>
-    <p>Приклад:</p>
-    <pre>
-class Example {
-    static int count = 0;
-}
-    </pre>
 
 </body>
 

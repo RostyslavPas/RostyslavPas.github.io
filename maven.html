@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maven</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0 10px 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Maven: Огляд і призначення</h1>
+    <p><strong>Maven</strong> — це інструмент для управління проєктами та автоматизації процесу збірки, який переважно використовується в Java-проєктах. Maven полегшує роботу розробникам і тестувальникам, забезпечуючи стандартизовану структуру проєкту, управління залежностями та інтеграцію з іншими інструментами.</p>
+
+    <h2>Основні функції Maven</h2>
+    <ul>
+        <li><strong>Управління залежностями</strong>: Maven дозволяє легко підключати бібліотеки через файл <code>pom.xml</code>.
+            <pre>
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.7.0</version>
+    <scope>test</scope>
+</dependency>
+            </pre>
+        </li>
+        <li><strong>Збірка проєкту</strong>: Maven автоматизує компіляцію, тестування, створення JAR/WAR-файлів.</li>
+        <li><strong>Інтеграція з CI/CD</strong>: Maven легко інтегрується з Jenkins, GitHub Actions, Bamboo.</li>
+        <li><strong>Профілі збірки</strong>: Дозволяє створювати конфігурації для різних середовищ (development, staging).</li>
+    </ul>
+
+    <h2>Файл <code>pom.xml</code></h2>
+    <p>Основний конфігураційний файл Maven, який описує залежності та налаштування збірки.</p>
+    <pre>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>my-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+    </dependencies>
+</project>
+    </pre>
+
+    <h2>Основні команди Maven</h2>
+    <ul>
+        <li><code>mvn clean install</code>: Оновлення залежностей.</li>
+        <li><code>mvn test</code>: Запуск тестів.</li>
+        <li><code>mvn package</code>: Збирання проєкту.</li>
+        <li><code>mvn validate</code>: Перевірка цілісності проєкту.</li>
+        <li><code>mvn site</code>: Генерація документації.</li>
+    </ul>
+
+    <h2>Переваги Maven</h2>
+    <ul>
+        <li>Автоматизація та стандартизація процесів.</li>
+        <li>Легке управління залежностями.</li>
+        <li>Масштабованість для великих проєктів.</li>
+        <li>Інтеграція з CI/CD.</li>
+    </ul>
+
+    <h2>Недоліки Maven</h2>
+    <ul>
+        <li>Менш гнучкий, ніж Gradle.</li>
+        <li>Складність у налаштуванні великих проєктів.</li>
+        <li>Залежність від онлайн-репозиторіїв.</li>
+    </ul>
+
+    <h2>Висновок</h2>
+    <p>Maven — це потужний і зручний інструмент для розробників та тестувальників Java-проєктів, який забезпечує автоматизацію, стандартизацію і ефективність управління залежностями та процесами розробки.</p>
+</body>
+</html>
