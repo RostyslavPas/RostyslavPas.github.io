@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoSupport Pro</title>
+  <style>
+    .plan-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .plan-info-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .plan-name {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+
+    .replies-used {
+      position: relative;
+      width: 1072px;
+      height: 26px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+    }
+
+    .replies-used-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background-color: #75F3FB;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+
+    .status {
+      padding: 5px 10px;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="plan-info">
+    <div class="plan-info-left">
+      <div class="plan-name">CoSupport</div>
+      <div class="replies-used">
+        <div class="replies-used-fill" id="replies-used-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    const repliesUsed = 8;
+    const repliesLeft = 991;
+    const totalReplies = repliesUsed + repliesLeft;
+
+    const repliesUsedFill = document.getElementById('replies-used-fill');
+    repliesUsedFill.style.width = `${(repliesUsed / totalReplies) * 100}%`;
+  </script>
+</body>
+</html>
