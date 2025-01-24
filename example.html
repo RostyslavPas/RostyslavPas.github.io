@@ -12,8 +12,15 @@
 
     .progress-bar {
       height: 100%;
-      background-color: #4CAF50;
       transition: width 0.5s ease;
+    }
+
+    .progress-bar--completed {
+      background-color: #4CAF50;
+    }
+
+    .progress-bar--remaining {
+      background-color: #FFC107;
     }
 
     .input-container {
@@ -85,7 +92,8 @@
     <button onclick="updateProgress()">Calculate Progress</button>
   </div>
   <div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
+    <div class="progress-bar progress-bar--completed" id="progress-bar-completed"></div>
+    <div class="progress-bar progress-bar--remaining" id="progress-bar-remaining"></div>
   </div>
   <p id="progress-text"></p>
   <p id="remaining-text"></p>
@@ -93,7 +101,8 @@
   <script>
     const totalKmInput = document.getElementById('total-km');
     const currentKmInput = document.getElementById('current-km');
-    const progressBar = document.getElementById('progress-bar');
+    const progressBarCompleted = document.getElementById('progress-bar-completed');
+    const progressBarRemaining = document.getElementById('progress-bar-remaining');
     const progressText = document.getElementById('progress-text');
     const remainingText = document.getElementById('remaining-text');
 
@@ -102,8 +111,11 @@
       const currentKm = parseFloat(currentKmInput.value);
       const progressPercentage = (currentKm / totalKm) * 100;
       const remainingKm = totalKm - currentKm;
+      const completedPercentage = progressPercentage;
+      const remainingPercentage = 100 - progressPercentage;
 
-      progressBar.style.width = `${progressPercentage}%`;
+      progressBarCompleted.style.width = `${completedPercentage}%`;
+      progressBarRemaining.style.width = `${remainingPercentage}%`;
       progressText.textContent = `You have traveled ${currentKm.toFixed(2)} km out of ${totalKm.toFixed(2)} km.`;
       remainingText.textContent = `You have ${remainingKm.toFixed(2)} km left to reach your goal.`;
     }
