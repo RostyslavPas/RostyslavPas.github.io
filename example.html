@@ -41,6 +41,7 @@
     <label for="current-km">Kilometers Traveled:</label>
     <input type="number" id="current-km" value="5000" min="0">
   </div>
+  <button onclick="updateProgress()">Calculate Progress</button>
   <div class="progress-container">
     <div class="progress-bar" id="progress-bar"></div>
   </div>
@@ -60,9 +61,6 @@
       progressBar.style.width = `${progressPercentage}%`;
       progressText.textContent = `You have traveled ${currentKm.toFixed(2)} km out of ${totalKm.toFixed(2)} km.`;
     }
-
-    totalKmInput.addEventListener('input', updateProgress);
-    currentKmInput.addEventListener('input', updateProgress);
 
     updateProgress();
   </script>
