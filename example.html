@@ -17,7 +17,7 @@
     }
 
     .input-container {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
       margin-bottom: 10px;
     }
@@ -31,23 +31,44 @@
       font-size: 16px;
     }
 
-    @media (min-width: 768px) {
-      .input-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .input-container label {
-        margin-right: 10px;
-        margin-bottom: 0;
-      }
-
-      .input-container input {
-        width: auto;
-        flex-grow: 1;
-      }
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      text-align: center;
+      margin-top: 20px;
     }
+
+   .button-container button {
+     background-color: #13eaf1;
+     color: #333;
+     padding: 8px 16px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     display: inline-block;
+     text-align: center;
+     position: absolute;
+     top: 250px;
+     left: 10px;
+     transition: all 0.3s ease;
+   }
+
+   .button-container button:hover {
+     background-color: #0bc4d2;
+     color: #fff;
+   }
+
+   @media (max-width: 768px) {
+     .button-container button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: auto;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+   }
   </style>
 </head>
 <body>
@@ -60,7 +81,9 @@
     <label for="current-km">Current kilometers ride:</label>
     <input type="number" id="current-km" value="0" min="0">
   </div>
-  <button onclick="updateProgress()">Calculate Progress</button>
+  <div class="button-container">
+    <button onclick="updateProgress()">Calculate Progress</button>
+  </div>
   <div class="progress-container">
     <div class="progress-bar" id="progress-bar"></div>
   </div>
