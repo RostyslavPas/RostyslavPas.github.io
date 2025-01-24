@@ -222,10 +222,16 @@
 
     updateProgress();
 
-    document.querySelector('button').addEventListener('click', () => {
-      localStorage.setItem('currentKm', currentKmInput.value);
-      updateProgress();
+    document.querySelector('.calculate-btn').addEventListener('click', () => {
+    localStorage.setItem('currentKm', currentKmInput.value);
+    updateProgress();
     });
+
+    const storedCurrentKm = localStorage.getItem('currentKm');
+    if (storedCurrentKm) {
+      currentKmInput.value = storedCurrentKm;
+    }
+    updateProgress();
 
   </script>
 </body>
