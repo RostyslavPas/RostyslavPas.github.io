@@ -8,7 +8,7 @@
       background-color: #e0e0e0;
       border-radius: 10px;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .progress-bar {
@@ -30,15 +30,17 @@
 
     .cyclist-icon {
       position: absolute;
-      bottom: 30px;
-      left: 0;
+      bottom: 18px;
       transform: translateX(-50%);
       font-size: 24px;
       z-index: 10;
       transition: left 0.5s ease;
+      color: black;
+      visibility: visible;
     }
 
     .cyclist-icon i {
+      font-family: 'Segoe UI Emoji', Arial, sans-serif;
       font-size: 24px;
       color: #000;
     }
@@ -127,6 +129,9 @@
     const progressText = document.getElementById('progress-text');
     const remainingText = document.getElementById('remaining-text');
 
+    const cyclistIcon = document.getElementById('cyclist-icon');
+    cyclistIcon.innerHTML = '&#x1F6B4;';
+
     function updateProgress() {
       const totalKm = parseFloat(totalKmInput.value);
       const currentKm = parseFloat(currentKmInput.value);
@@ -135,15 +140,18 @@
         return;
       }
       const progressPercentage = (currentKm / totalKm) * 100;
-      const remainingPercentage = 100 - progressPercentage;
 
       progressBarCompleted.style.width = `${progressPercentage}%`;
-      progressBarRemaining.style.width = `${remainingPercentage}%`;
+      progressBarRemaining.style.width = `${100 - progressPercentage}%`;
 
       const progressBarWidth = document.querySelector('.progress-container').offsetWidth;
       const cyclistPosition = (progressPercentage / 100) * progressBarWidth;
-      const cyclistIcon = document.getElementById('cyclist-icon');
       cyclistIcon.style.left = `${cyclistPosition}px`;
+
+      console.log(cyclistIcon);
+      console.log('Cyclist Position:', cyclistPosition);
+      console.log('Progress Bar Width:', progressBarWidth);
+      console.log('Cyclist Icon Element:', cyclistIcon);
 
       progressText.textContent = `You have traveled ${currentKm.toFixed(2)} km out of ${totalKm.toFixed(2)} km.`;
       remainingText.textContent = `You have ${totalKm - currentKm.toFixed(2)} km left to reach your goal.`;
@@ -153,8 +161,6 @@
     if (storedCurrentKm) {
       currentKmInput.value = storedCurrentKm;
     }
-    const cyclistIcon = document.getElementById('cyclist-icon');
-    cyclistIcon.innerHTML = '🚴‍♂️';
 
     updateProgress();
 
