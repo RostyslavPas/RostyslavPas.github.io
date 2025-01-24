@@ -28,6 +28,21 @@
       right: 0;
     }
 
+    .cyclist-icon {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      transform: translateX(-50%);
+      font-size: 24px;
+      z-index: 10;
+      transition: left 0.5s ease;
+    }
+
+    .cyclist-icon i {
+      font-size: 24px;
+      color: #000;
+    }
+
     .input-container {
       display: inline-flex;
       flex-direction: column;
@@ -99,6 +114,7 @@
   <div class="progress-container">
     <div class="progress-bar progress-bar--completed" id="progress-bar-completed"></div>
     <div class="progress-bar progress-bar--remaining" id="progress-bar-remaining"></div>
+    <div class="cyclist-icon" id="cyclist-icon"></div>
   </div>
   <p id="progress-text"></p>
   <p id="remaining-text"></p>
@@ -124,14 +140,21 @@
       progressBarCompleted.style.width = `${progressPercentage}%`;
       progressBarRemaining.style.width = `${remainingPercentage}%`;
 
+      const progressBarWidth = document.querySelector('.progress-container').offsetWidth;
+      const cyclistPosition = (progressPercentage / 100) * progressBarWidth;
+      const cyclistIcon = document.getElementById('cyclist-icon');
+      cyclistIcon.style.left = `${cyclistPosition}px`;
+
       progressText.textContent = `You have traveled ${currentKm.toFixed(2)} km out of ${totalKm.toFixed(2)} km.`;
       remainingText.textContent = `You have ${totalKm - currentKm.toFixed(2)} km left to reach your goal.`;
     }
 
-      const storedCurrentKm = localStorage.getItem('currentKm');
-      if (storedCurrentKm) {
-        currentKmInput.value = storedCurrentKm;
-      }
+    const storedCurrentKm = localStorage.getItem('currentKm');
+    if (storedCurrentKm) {
+      currentKmInput.value = storedCurrentKm;
+    }
+    const cyclistIcon = document.getElementById('cyclist-icon');
+    cyclistIcon.innerHTML = '🚴‍♂️';
 
     updateProgress();
 
