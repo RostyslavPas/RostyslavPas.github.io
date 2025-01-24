@@ -7,20 +7,25 @@
       height: 20px;
       background-color: #e0e0e0;
       border-radius: 10px;
+      position: relative;
       overflow: hidden;
     }
 
     .progress-bar {
       height: 100%;
+      position: absolute;
+      top: 0;
       transition: width 0.5s ease;
     }
 
     .progress-bar--completed {
       background-color: #4CAF50;
+      left: 0;
     }
 
     .progress-bar--remaining {
-      background-color: #FFC107;
+      background-color: #e84310;
+      right: 0;
     }
 
     .input-container {
@@ -109,21 +114,24 @@
     function updateProgress() {
       const totalKm = parseFloat(totalKmInput.value);
       const currentKm = parseFloat(currentKmInput.value);
+      if (currentKm > totalKm) {
+        alert('Current kilometers cannot exceed total kilometers.');
+        return;
+      }
       const progressPercentage = (currentKm / totalKm) * 100;
-      const remainingKm = totalKm - currentKm;
-      const completedPercentage = progressPercentage;
       const remainingPercentage = 100 - progressPercentage;
 
-      progressBarCompleted.style.width = `${completedPercentage}%`;
+      progressBarCompleted.style.width = `${progressPercentage}%`;
       progressBarRemaining.style.width = `${remainingPercentage}%`;
+
       progressText.textContent = `You have traveled ${currentKm.toFixed(2)} km out of ${totalKm.toFixed(2)} km.`;
-      remainingText.textContent = `You have ${remainingKm.toFixed(2)} km left to reach your goal.`;
+      remainingText.textContent = `You have ${totalKm - currentKm.toFixed(2)} km left to reach your goal.`;
     }
 
-    const storedCurrentKm = localStorage.getItem('currentKm');
-    if (storedCurrentKm) {
-      currentKmInput.value = storedCurrentKm;
-    }
+      const storedCurrentKm = localStorage.getItem('currentKm');
+      if (storedCurrentKm) {
+        currentKmInput.value = storedCurrentKm;
+      }
 
     updateProgress();
 
