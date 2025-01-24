@@ -1,6 +1,6 @@
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style>
     .progress-container {
       width: 100%;
@@ -28,6 +28,7 @@
 
     .input-container input {
       width: 100%;
+      font-size: 16px;
     }
 
     @media (min-width: 768px) {
@@ -56,7 +57,7 @@
     <input type="number" id="total-km" value="15000" min="0">
   </div>
   <div class="input-container">
-    <label for="current-km">Kilometers Now:</label>
+    <label for="current-km">Current kilometers:</label>
     <input type="number" id="current-km" value="0" min="0">
   </div>
   <button onclick="updateProgress()">Calculate Progress</button>
