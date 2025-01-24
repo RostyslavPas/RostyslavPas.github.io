@@ -162,7 +162,7 @@
       </div>
       <div class="input-container">
         <label for="current-km">Current kilometers ride:</label>
-        <input type="number" id="current-km" value="" min="0" placeholder="Enter your current kilometers">
+        <input type="number" id="current-km" value="0" min="0" placeholder="Enter your current kilometers">
       </div>
       <button class="calculate-btn" onclick="updateProgress()">Calculate Progress</button>
       <div class="progress-container">
@@ -199,7 +199,14 @@
       if (currentKm > totalKm) {
         alert('Current kilometers cannot exceed total kilometers.');
         return;
+      } if (isNaN(totalKm) || totalKm <= 1) {
+          alert('Please enter a valid positive number for Total Kilometers.');
+          return;
+      } if (isNaN(currentKm) || currentKm < 0) {
+          alert('Please enter a valid non-negative number for Current Kilometers.');
+          return;
       }
+
       const progressPercentage = (currentKm / totalKm) * 100;
 
       progressBarCompleted.style.width = `${progressPercentage}%`;
