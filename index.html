@@ -1,25 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background-image:
-                    url('https://pinarello.com/storage/thumbs/Article/2240_1602_crop__044f77d37d26cac22604153934972969.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        h1 {
-            color: black;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>3D Jersey Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-image: url('https://pinarello.com/storage/thumbs/Article/2240_1602_crop__044f77d37d26cac22604153934972969.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    #controls {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    #controls input[type="color"],
+    #controls input[type="text"] {
+      margin-top: 6px;
+      width: 180px;
+    }
+  </style>
 </head>
 <body>
- <h1> test_page </h1>
-</body>
+  <div id="controls">
+    <label>Primary Color</label><br />
+    <input type="color" id="colorPicker" value="#ffffff" /><br />
+    <label>Texture URL</label><br />
+    <input type="text" id="textureInput" value="https://threejs.org/examples/textures/uv_grid_opengl.jpg" />
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.155.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    let scene, camera, renderer, jersey, controls, material;
+
+    init();
+
+    function init() {
+      // Scene setup
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+      camera.position.z = 4;
+
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Light
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(5, 5, 5).normalize();
+      scene.add(light);
+
+      // Texture and material
+      const texture = new THREE.TextureLoader().load(document.getElementById("textureInput").value);
+      material = new THREE.MeshStandardMaterial({ map: texture, color: 0xffffff });
+
+      // Geometry
+      const geometry = new THREE.SphereGeometry(1, 64, 64); // Можна замінити на .glb модель
+      jersey = new THREE.Mesh(geometry, material);
+      scene.add(jersey);
+
+      // Controls
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+      animate();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      jersey.rotation.y += 0.005;
+      renderer.render(scene, camera);
+    }
+
+    // Update color
+    document.getElementById("colorPicker").addEventListener("input", (e) => {
+      material.color.set(e.target.value);
+    });
+
+    // Update texture
+    document.getElementById("textureInput").addEventListener("change", (e) => {
+      const newTexture = new THREE.TextureLoader().load(e.target.value);
+      material.map = newTexture;
+      material.needsUpdate = true;
+    });
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
 </html>
