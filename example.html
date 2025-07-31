@@ -1,6 +1,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script type="text/javascript" src="https://stage2-astra.surv.biz/digi_runner.js"></script>
   <style>
     .progress-container {
       width: 100%;
@@ -177,6 +178,21 @@
       localStorage.setItem('currentKm', currentKmInput.value);
       updateProgress();
     });
+    function SetParameters() {
+        window.VocSignal_SendEvent('SetParameters', {
+            apiUrl: 'https://stage2-astra.surv.biz/',
+            // apiUrl: 'https://stage7-astra.surv.biz/',
+            // apiUrl: 'http://localhost:8410/',
+            language: 'en',
+            customerId: 'test8U5jh8R00Hjh9'+ Math.floor(Math.random() *
+                Math.floor(9999)),
+            surveyId: 16889
+        });
+        // window.VocSignal_SendEvent('SetCsvParameters', [
+        //     { id: 63854,  limit: 6, randomLimit: true }
+        // ]);
+    }
+    SetParameters();
   </script>
 </body>
 </html>
