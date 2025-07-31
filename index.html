@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script type="text/javascript" src="https://stage2-astra.surv.biz/digi_runner.js"></script>
   <title>3D Jersey Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
@@ -104,6 +105,21 @@
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
+    function SetParameters() {
+        window.VocSignal_SendEvent('SetParameters', {
+            apiUrl: 'https://stage2-astra.surv.biz/',
+            // apiUrl: 'https://stage7-astra.surv.biz/',
+            // apiUrl: 'http://localhost:8410/',
+            language: 'en',
+            customerId: 'test8U5jh8R00Hjh9'+ Math.floor(Math.random() *
+                Math.floor(9999)),
+            surveyId: 16889
+        });
+        // window.VocSignal_SendEvent('SetCsvParameters', [
+        //     { id: 63854,  limit: 6, randomLimit: true }
+        // ]);
+    }
+    SetParameters();
   </script>
 </body>
 </html>
