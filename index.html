@@ -46,60 +46,6 @@
   </div>
 
   <script>
-    let scene, camera, renderer, jersey, controls, material;
-
-    init();
-
-    function init() {
-      // Scene setup
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-      camera.position.z = 4;
-
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
-      // Light
-      const light = new THREE.DirectionalLight(0xffffff, 1);
-      light.position.set(5, 5, 5).normalize();
-      scene.add(light);
-
-      // Texture and material
-      const texture = new THREE.TextureLoader().load(document.getElementById("textureInput").value);
-      material = new THREE.MeshStandardMaterial({ map: texture, color: 0xffffff });
-
-      // Geometry
-      const geometry = new THREE.SphereGeometry(1, 64, 64); // Можна замінити на .glb модель
-      jersey = new THREE.Mesh(geometry, material);
-      scene.add(jersey);
-
-      animate();
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-      jersey.rotation.y += 0.005;
-      renderer.render(scene, camera);
-    }
-
-    // Update color
-    document.getElementById("colorPicker").addEventListener("input", (e) => {
-      material.color.set(e.target.value);
-    });
-
-    // Update texture
-    document.getElementById("textureInput").addEventListener("change", (e) => {
-      const newTexture = new THREE.TextureLoader().load(e.target.value);
-      material.map = newTexture;
-      material.needsUpdate = true;
-    });
-
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
     function SetParameters() {
         window.VocSignal_SendEvent('SetParameters', {
             apiUrl: 'https://stage2-astra.surv.biz/',
@@ -115,6 +61,7 @@
         // ]);
     }
     SetParameters();
+
   </script>
 </body>
 </html>
