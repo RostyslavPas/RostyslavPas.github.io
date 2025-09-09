@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Симуляція співбесіди QA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .qa-block {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .question {
+            font-weight: bold;
+            color: #1a73e8;
+        }
+        .answer {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Симуляція співбесіди на QA Automation Engineer</h1>
+
+    <h2>Українська версія</h2>
+
+    <div class="qa-block">
+        <div class="question">1. Як би ти інтегрував performance-тестування в CI/CD пайплайни?</div>
+        <div class="answer"><b>Відповідь:</b> Для початку я б провів аналіз сервісу, написав тест-план, створив чек-листи для смок та регресійного тестування. Автоматизував би API та UI позитивними кейсами, додав енд-ту-енд тести, докеризував проект, підключив Allure репорти. Для регресії додав би негативні сценарії, параметризацію та паралельний запуск тестів.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">2. Як переконати команду автоматизувати ризиковий модуль?</div>
+        <div class="answer"><b>Відповідь:</b> Спершу я вивчив би функціонал і ризики. Далі пояснив би команді, що при правильній організації їх можна мінімізувати. Аргументував би важливість автоматизації цього модуля, запропонував тестувати його на окремому стейджі або локально в Docker, щоб не нашкодити продукту. Це розвантажить команду в майбутньому.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">3. Як протестувати форму реєстрації?</div>
+        <div class="answer"><b>Відповідь:</b> Я застосую техніки тест-дизайну: еквівалентне розбиття, граничні значення, таблиця прийняття рішень, pairwise-тестування, state transition і сценарне тестування. Перевірю роботу реєстрації з валідними та невалідними даними, підтвердження активації користувача, відповідність даних у БД, безпекові аспекти (SQL ін’єкції, XSS).</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">4. Як протестувати API CRUD (GET/POST/PUT/DELETE)?</div>
+        <div class="answer"><b>Відповідь:</b> Спершу перевірю GET — статус 200, що список не пустий. Для POST — додам новий товар, перевірю через GET, що він додався. Перевірю JSON-схему. Для PUT — зміню поля і переконаюся, що вони оновились. Для DELETE — видалю товар і перевірю, що його більше немає. Усі позитивні/негативні сценарії параметризую.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">5. Що робити, якщо тест падає нестабільно?</div>
+        <div class="answer"><b>Відповідь:</b> Налаштую ретраї. Якщо тест продовжує падати — аналізую логи, щоб зрозуміти, чи проблема на сервері чи в тесті. Далі проходжу сценарій вручну, запускаю тест у debug-режимі, ставлю breakpoint і шукаю помилку. Часто причини у некоректних локаторах або таймінгах.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">6. Як оформлюєш баг-репорт?</div>
+        <div class="answer"><b>Відповідь:</b> Я роблю чіткий опис із step-to-reproduce, додаю скріншоти, логи або трейсбеки. Посилаюся на вимоги або документацію. Якщо бекенд — додаю логи, якщо фронтенд — скріни. В репорті тегну проджект-менеджера, який вирішує, чи баг виправляти зараз чи відкласти.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">7. Регресія займає багато часу. Що робити?</div>
+        <div class="answer"><b>Відповідь:</b> Я би додав паралелізацію тестів і запуск у нічний час. Для швидкої перевірки якості продукту після кожного деплою — додав би щоденні смок-тести.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">8. Який у тебе досвід з performance-тестуванням?</div>
+        <div class="answer"><b>Відповідь:</b> Досвіду в комерційних проектах не маю, але вивчав JMeter. Використав би його для тестування граничних значень — скільки потоків і запитів витримує API. Також перевірив би час відповіді і навантаження на окремі ендпоінти.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">9. Що зробиш, якщо успадкував слабку автоматизацію?</div>
+        <div class="answer"><b>Відповідь:</b> Спершу перевірю тестову документацію, складу roadmap. Виділю критично важливий функціонал і покрию його тестами. Проаналізую флейки і відрефакторю їх. Розділю проект на частини і закріплю відповідальних за них.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">10. Як організуєш роботу з тестовими даними?</div>
+        <div class="answer"><b>Відповідь:</b> Для великої кількості даних запускаю регресію на локальному середовищі, смоки — на стейджі. Використовую підготовлені дампи БД. Після прогонів тестові дані очищаю.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">11. Як побудувати єдину QA-стратегію в масштабі компанії?</div>
+        <div class="answer"><b>Відповідь:</b>
+            <ul>
+                <li><b>Аудит</b> процесів, інструментів, рівня зрілості QA.</li>
+                <li><b>Уніфікація</b>: QA Guidelines, єдиний стек інструментів, code review стандартів.</li>
+                <li><b>Флейки та дублювання</b>: тестова матриця, моніторинг стабільності, SLA на виправлення.</li>
+                <li><b>Метрики</b>: покриття, % флейків, час прогону.</li>
+                <li><b>CI/CD інтеграція</b>: смок на PR, nightly тести, регрес перед релізом.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>English Version</h2>
+
+    <div class="qa-block">
+        <div class="question">1. How would you integrate performance testing into CI/CD pipelines?</div>
+        <div class="answer"><b>Answer:</b> I would start with analyzing the service, creating a test plan, and building checklists for smoke and regression testing. I would automate API and UI with positive cases, add end-to-end tests, dockerize the project, and connect Allure reports. For regression, I’d add negative scenarios, parametrization, and parallel execution.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">2. How would you convince the team to automate a risky module?</div>
+        <div class="answer"><b>Answer:</b> First, I would study the functionality and risks. Then, I would explain to the team that risks can be minimized with proper organization. I would argue why automation is important, and propose to run it on a separate stage or locally in Docker to avoid harming the product. This will also reduce manual effort in the future.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">3. How would you test a registration form?</div>
+        <div class="answer"><b>Answer:</b> I would apply test design techniques: equivalence partitioning, boundary values, decision table, pairwise testing, state transition, and scenario testing. I would verify registration with valid/invalid data, user activation confirmation, DB consistency, and security checks (SQL injection, XSS).</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">4. How would you test CRUD API (GET/POST/PUT/DELETE)?</div>
+        <div class="answer"><b>Answer:</b> First, check GET — status 200, non-empty list. For POST — add a new product, verify with GET it’s added. Validate JSON schema. For PUT — update fields and check they changed. For DELETE — remove product and confirm it’s gone. Parametrize all positive/negative cases.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">5. What if a test fails inconsistently?</div>
+        <div class="answer"><b>Answer:</b> I’d configure retries. If it still fails — analyze logs to see if it’s server-side or test-side. Then manually reproduce via UI, run in debug mode, set breakpoints, and investigate. Often issues are incorrect locators or timing problems.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">6. How do you write a bug report?</div>
+        <div class="answer"><b>Answer:</b> I always provide clear steps to reproduce, screenshots, logs or traces, and references to requirements. For backend issues — logs, for frontend — screenshots. I also tag the PM, who decides whether to fix in the current release or backlog it.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">7. Regression takes too long. What would you do?</div>
+        <div class="answer"><b>Answer:</b> I’d add parallelization and run tests overnight. For quick quality checks after each deployment, I’d set up daily smoke tests.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">8. Do you have experience with performance testing?</div>
+        <div class="answer"><b>Answer:</b> I don’t have production experience, but I’ve studied JMeter. I’d use it to test boundary conditions — how many threads and requests the API can handle. Also, I’d measure response times and load for specific endpoints.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">9. What if you inherit a weak automation project?</div>
+        <div class="answer"><b>Answer:</b> First, review documentation and create a roadmap. Cover critical functionality with tests. Investigate flaky tests and refactor them. Split the project into parts and assign responsible owners.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">10. How would you handle test data?</div>
+        <div class="answer"><b>Answer:</b> For large data volumes, I’d run regression on local environment, smoke on stage. I’d use prepared DB dumps and clean up test data after each run.</div>
+    </div>
+
+    <div class="qa-block">
+        <div class="question">11. How would you build a unified QA strategy across the company?</div>
+        <div class="answer"><b>Answer:</b>
+            <ul>
+                <li><b>Audit</b> processes, tools, and QA maturity level.</li>
+                <li><b>Unification</b>: QA Guidelines, unified toolset, code review standards.</li>
+                <li><b>Flakiness & duplication</b>: test matrix, monitoring stability, SLA for fixes.</li>
+                <li><b>Metrics</b>: coverage, % of flaky tests, execution time.</li>
+                <li><b>CI/CD integration</b>: smoke on PR, nightly runs, regression before release.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
