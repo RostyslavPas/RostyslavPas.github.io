@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting to Bike Component Tracker...</title>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get("code");
+
+      if (code) {
+        // Перенаправляємо у мобільний застосунок
+        window.location.href = `bikecomponenttracker://redirect?code=${code}`;
+      } else {
+        document.body.innerHTML = "<h2>❌ Authorization code not found</h2>";
+      }
+    </script>
+  </head>
+  <body style="font-family: sans-serif; text-align: center; margin-top: 50px;">
+    <h2>⏳ Redirecting to BikeComponentTracker...</h2>
+  </body>
+</html>
