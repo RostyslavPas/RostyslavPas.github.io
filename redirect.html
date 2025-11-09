@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
   <head>
-    <meta charset="utf-8" />
-    <title>Redirecting...</title>
-    <script>
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get("code");
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strava Authorization Redirect</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background-color: #0f172a;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #ff4f00;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      p {
+        margin-top: 20px;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Авторизація Strava…</h1>
+    <div class="spinner"></div>
+    <p>Зачекай, виконується перенаправлення назад у застосунок 🚴‍♂️</p>
 
-      if (code) {
-        // ✅ передаємо назад у застосунок через схему
-        window.location.href = `bikecomponenttracker://redirect?code=${code}`;
-      } else {
-        document.body.innerHTML = "<h2>❌ Authorization code not found</h2>";
+    <script>
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        const error = params.get("error");
+
+        if (error) {
+          document.body.innerHTML = `<h1>❌ Помилка авторизації</h1><p>${error}</p>`;
+        } else if (code) {
+          // Глибоке перенаправлення у застосунок
+          const deepLink = `bikecomponenttracker://redirect?code=${code}`;
+          window.location.replace(deepLink);
+
+          // fallback — якщо deep link не спрацював протягом 3с
+          setTimeout(() => {
+            window.location.href = `https://rostyslavpas.github.io?code=${code}`;
+          }, 3000);
+        } else {
+          document.body.innerHTML = `<h1>⚠️ Не знайдено код авторизації</h1>`;
+        }
+      } catch (e) {
+        document.body.innerHTML = `<h1>❌ Помилка редіректу</h1><pre>${e.message}</pre>`;
       }
     </script>
-  </head>
-  <body style="font-family: sans-serif; text-align:center; margin-top:40px;">
-    <h2>🚴‍♂️ Redirecting to BikeComponentTracker...</h2>
   </body>
 </html>
